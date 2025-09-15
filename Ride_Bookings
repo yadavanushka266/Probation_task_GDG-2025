@@ -1,0 +1,135 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+data=pd.read_csv('Ride_booking.csv')
+
+data.columns
+Index(['Date', 'Time', 'Booking ID', 'Booking Status', 'Customer ID',
+       'Vehicle Type', 'Pickup Location', 'Drop Location', 'Avg VTAT',
+       'Avg CTAT', 'Cancelled Rides by Customer',
+       'Reason for cancelling by Customer', 'Cancelled Rides by Driver',
+       'Driver Cancellation Reason', 'Incomplete Rides',
+       'Incomplete Rides Reason', 'Booking Value', 'Ride Distance',
+       'Driver Ratings', 'Customer Rating', 'Payment Method'],
+      dtype='object')
+
+[ ]
+data.info()
+
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 6181 entries, 0 to 6180
+Data columns (total 21 columns):
+ #   Column                             Non-Null Count  Dtype  
+---  ------                             --------------  -----  
+ 0   Date                               6181 non-null   object 
+ 1   Time                               6181 non-null   object 
+ 2   Booking ID                         6181 non-null   object 
+ 3   Booking Status                     6181 non-null   object 
+ 4   Customer ID                        6181 non-null   object 
+ 5   Vehicle Type                       6181 non-null   object 
+ 6   Pickup Location                    6181 non-null   object 
+ 7   Drop Location                      6180 non-null   object 
+ 8   Avg VTAT                           5763 non-null   float64
+ 9   Avg CTAT                           4236 non-null   float64
+ 10  Cancelled Rides by Customer        441 non-null    float64
+ 11  Reason for cancelling by Customer  441 non-null    object 
+ 12  Cancelled Rides by Driver          1086 non-null   float64
+ 13  Driver Cancellation Reason         1086 non-null   object 
+ 14  Incomplete Rides                   391 non-null    float64
+ 15  Incomplete Rides Reason            391 non-null    object 
+ 16  Booking Value                      4236 non-null   float64
+ 17  Ride Distance                      4236 non-null   float64
+ 18  Driver Ratings                     3845 non-null   float64
+ 19  Customer Rating                    3845 non-null   float64
+ 20  Payment Method                     4236 non-null   object 
+dtypes: float64(9), object(12)
+memory usage: 1014.2+ KB
+
+[ ]
+data.shape
+(43133, 21)
+
+[ ]
+data.ndim
+2
+
+[ ]
+data.head()
+
+
+[ ]
+data.tail()
+
+
+[ ]
+data.describe()
+
+
+[ ]
+data.dtypes
+
+
+[ ]
+data.count()
+
+
+[ ]
+data.isnull().sum()
+
+
+[ ]
+data.isnull().sum().sort_values(ascending = False)
+
+
+[ ]
+round(data.isnull().sum() / len(data) * 100, 2).sort_values(ascending=False)
+
+
+[ ]
+data.isnull().sum().sum()
+np.int64(324031)
+
+[ ]
+
+
+plt.figure(figsize=(22,10))
+sns.heatmap(data.isnull(), yticklabels=False, cbar=False, cmap='viridis')
+
+
+[ ]
+data.info()
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 43264 entries, 0 to 43263
+Data columns (total 21 columns):
+ #   Column                             Non-Null Count  Dtype  
+---  ------                             --------------  -----  
+ 0   Date                               43264 non-null  object 
+ 1   Time                               43264 non-null  object 
+ 2   Booking ID                         43264 non-null  object 
+ 3   Booking Status                     43264 non-null  object 
+ 4   Customer ID                        43264 non-null  object 
+ 5   Vehicle Type                       43264 non-null  object 
+ 6   Pickup Location                    43264 non-null  object 
+ 7   Drop Location                      43264 non-null  object 
+ 8   Avg VTAT                           40187 non-null  float64
+ 9   Avg CTAT                           29460 non-null  float64
+ 10  Cancelled Rides by Customer        3016 non-null   float64
+ 11  Reason for cancelling by Customer  3016 non-null   object 
+ 12  Cancelled Rides by Driver          7711 non-null   float64
+ 13  Driver Cancellation Reason         7711 non-null   object 
+ 14  Incomplete Rides                   2632 non-null   float64
+ 15  Incomplete Rides Reason            2632 non-null   object 
+ 16  Booking Value                      29460 non-null  float64
+ 17  Ride Distance                      29460 non-null  float64
+ 18  Driver Ratings                     26828 non-null  float64
+ 19  Customer Rating                    26828 non-null  float64
+ 20  Payment Method                     29460 non-null  object 
+dtypes: float64(9), object(12)
+memory usage: 6.9+ MB
+
+[ ]
+data['Reason for cancelling by Customer'].value_counts()
+
+
